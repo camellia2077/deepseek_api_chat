@@ -22,7 +22,7 @@ https://platform.deepseek.com/api_keys 在这里获取并且创建你的deepseek
 
 # 程序使用说明
 
-全局变量MODEL = "deepseek-reasoner" 设置可选的模型名称，可以选MODEL = "deepseek-chat"
+全局变量MODEL_TYPE = "deepseek-reasoner" 设置可选的模型名称，可以选MODEL = "deepseek-chat"
 
 全局变量API_KEY = "sk-9de" ""里的内容替换为你的api_key
 
