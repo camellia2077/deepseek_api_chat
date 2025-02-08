@@ -8,7 +8,7 @@ python -m venv .venv
 
 2激活虚拟库
 
-python3 -m venv .venv
+venv\Scripts\activate
 
 3安装库
 
