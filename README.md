@@ -28,5 +28,5 @@ https://platform.deepseek.com/api_keys 在这里获取并且创建你的deepseek
 
 全局变量SYSTEM_MESSAGE = "You are a helpful assistant" 在""里面输入你想要的系统提示词
 
-全局变量FILE_PATH = "D:\\sub\\test\\input.txt"  在""里面输入用户提示词的目录，注意是\\而不是\
+全局变量FILE_PATH = "D:\\sub\\test\\input.txt"  在""里面输入用户提示词的目录，注意路径分割是双\\\而不是\
 
