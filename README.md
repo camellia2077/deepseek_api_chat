@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/7583aad0-cfe1-48b4-948a-d2ba677bb668)# 程序功能
+# 程序功能
 调用deepseek进行长文本输入
 
 # 环境配置
