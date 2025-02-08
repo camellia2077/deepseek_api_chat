@@ -4,12 +4,12 @@ import time
 
 # deepseek-reasoner
 # deepseek-chat
-MODEL = "deepseek-reasoner"
+MODEL_TYPE = "deepseek-reasoner"
 API_KEY = "sk-"
 BASE_URL = "https://api.deepseek.com"   # 替换为正确的 API 地址
 SYSTEM_MESSAGE = "You are a helpful assistant"
 FILE_PATH = "D:\\sub\\test\\input.txt"  # 全局文件路径变量
-
+# txt文件读取
 class FileReader:
     """
     用于读取文件内容的类，同时使用 tqdm 显示读取进度。
@@ -37,14 +37,14 @@ class FileReader:
             return ""
 
 class DeepSeekChat:
-    def __init__(self, model, api_key, base_url):
+    def __init__(self, model_type, api_key, base_url):
         self.client = OpenAI(api_key=api_key, base_url=base_url)
-        self.model = model
+        self.model_name = model_type
 
     def get_response(self, system_message, user_message):
         # 此处假设返回非流式响应，如需流式响应请设置 stream=True 并处理响应迭代
         response = self.client.chat.completions.create(
-            model=self.model,
+            model=self.model_name,
             messages=[
                 {"role": "system", "content": system_message},
                 {"role": "user", "content": user_message},
@@ -61,7 +61,7 @@ def main():
     print("Chat Started-------------------.\n")
     
     if user_message:
-        chat = DeepSeekChat(MODEL, API_KEY, BASE_URL)
+        chat = DeepSeekChat(MODEL_TYPE, API_KEY, BASE_URL)
         print("正在与 API 通信，请稍候...")
         # 模拟等待 API 响应的进度条（实际调用 API 时可能不需要此进度条）
         for _ in tqdm(range(100), desc="等待 API 响应", unit="%"):
