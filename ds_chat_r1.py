@@ -7,8 +7,8 @@ class TextAnalyzer:
     """
     
     def __init__(self, input_file, output_dir=None, system_prompt="You are a helpful assistant", 
-                 user_prompt="请分析以下文本内容：\n{user_input}", model_type="deepseek-reasoner", 
-                 api_key="", base_url="https://api.deepseek.com"):
+                 user_prompt="{user_input}", model_type="deepseek-chat", 
+                 api_key="sk-f6993dab2faf4348ab9be61d53eff2d4", base_url="https://api.deepseek.com"):
         """
         初始化TextAnalyzer类。
 
@@ -35,6 +35,10 @@ class TextAnalyzer:
         :raises FileNotFoundError: 如果输入文件不存在
         :raises ValueError: 如果输入文件不是有效的文件或不是.txt文件
         """
+        #检测文件是否为空
+        if os.path.getsize(self.input_file) == 0:
+            print(f"输入文件 {self.input_file} 为空，请检查文件内容。")
+            exit()  # 结束程序
         if not os.path.exists(self.input_file):
             raise FileNotFoundError(f"输入文件 {self.input_file} 不存在")
         if not os.path.isfile(self.input_file):
