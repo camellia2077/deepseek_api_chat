@@ -22,9 +22,12 @@ https://platform.deepseek.com/api_keys 在这里获取并且创建你的deepseek
 
 
 # 注意
-1请求次数不要太频繁，可以试试新建一个key再次使用
-2 是否输入了key
-3是否输入了正确的key
-3 如何无法连接，退出络代理
+1 请求次数不要太频繁，可以试试新建一个key再次使用
+
+2 检查你是否输入了key![image](https://github.com/user-attachments/assets/e5ae6cb1-fcda-4f9d-9e38-ddaf62485ef9)
+
+3 检查是否输入了正确的key![image](https://github.com/user-attachments/assets/82ce36e9-2e46-4213-8944-ddc1e32d5c97)
+
+4 如果无法连接，请先尝试使用ds_test.py文件，来网络状态
 
 
