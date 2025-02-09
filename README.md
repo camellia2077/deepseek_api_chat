@@ -17,13 +17,14 @@ https://platform.deepseek.com/api_keys 在这里获取并且创建你的deepseek
 
 
 # 程序使用说明
-修改
+在master.py中修改变量input_file和api_key，不设置output_dir默认输出到和输入文件同文件夹
+例如我在D:\sub\request中有一个request.txt文件，应该设置input_file = D:\\sub\\request\\request.txt，注意是双斜线
 
-全局变量MODEL_TYPE = "deepseek-reasoner" 设置可选的模型名称，可以选MODEL = "deepseek-chat"
 
-全局变量API_KEY = "sk-9de" ""里的内容替换为你的api_key
+# 注意
+1请求次数不要太频繁，可以试试新建一个key再次使用
+2 是否输入了key
+3是否输入了正确的key
+3 如何无法连接，退出络代理
 
-全局变量SYSTEM_MESSAGE = "You are a helpful assistant" 在""里面输入你想要的系统提示词
-
-全局变量FILE_PATH = "D:\\sub\\test\\input.txt"  在""里面输入用户提示词的目录，注意路径分割是双\\\而不是\
 
