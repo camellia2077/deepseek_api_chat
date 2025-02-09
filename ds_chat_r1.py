@@ -1,15 +1,14 @@
 import os
-import time
 from openai import OpenAI
-
+#2025-2-9 16:08 去掉计时器 
 class TextAnalyzer:
     """
     文本分析器类，用于处理文本文件并通过API获取分析结果。
     """
     
     def __init__(self, input_file, output_dir=None, system_prompt="You are a helpful assistant", 
-                 user_prompt="{user_input}", model_type="deepseek-chat", 
-                 api_key="", base_url="https://api.deepseek.com"):
+                 user_prompt="{user_input}", model_type="deepseek-reasoner", 
+                 api_key="sk-b6ba0c62249549f6bc45fb23c29d59f2", base_url="https://api.deepseek.com"):
         """
         初始化TextAnalyzer类。
 
@@ -36,7 +35,7 @@ class TextAnalyzer:
         :raises FileNotFoundError: 如果输入文件不存在
         :raises ValueError: 如果输入文件不是有效的文件或不是.txt文件
         """
-        #检测文件是否为空
+        # 检测文件是否为空
         if os.path.getsize(self.input_file) == 0:
             print(f"输入文件 {self.input_file} 为空，请检查文件内容。")
             exit()  # 结束程序
@@ -52,7 +51,7 @@ class TextAnalyzer:
         获取API响应。
 
         :param user_input: 用户输入的文本内容
-        :return: API返回的响应内容或错误码
+        :return: API返回的响应内容
         """
         client = OpenAI(api_key=self.api_key, base_url=self.base_url)
         
@@ -61,37 +60,13 @@ class TextAnalyzer:
             {"role": "user", "content": self.user_prompt.format(user_input=user_input)},
         ]
         
-        time.sleep(5)  # 每次调用前等待5秒
+        response = client.chat.completions.create(
+            model=self.model_type,
+            messages=messages,
+            stream=False
+        )
         
-        # 记录API调用的开始时间
-        start_time = time.time()
-        
-        try:
-            response = client.chat.completions.create(
-                model=self.model_type,
-                messages=messages,
-                stream=False
-            )
-            
-            # 记录API调用的结束时间
-            end_time = time.time()
-            
-            # 计算并输出API响应时间
-            api_response_time = end_time - start_time
-            print(f"API响应时间: {api_response_time:.2f}秒")
-            
-            return response.choices[0].message.content
-        
-        except Exception as e:
-            # 记录API调用的结束时间
-            end_time = time.time()
-            
-            # 计算并输出API响应时间
-            api_response_time = end_time - start_time
-            print(f"API调用失败，响应时间: {api_response_time:.2f}秒")
-            
-            # 返回错误码
-            return f"API调用失败，错误码: {str(e)}"
+        return response.choices[0].message.content
 
     def save_result(self, content):
         """
