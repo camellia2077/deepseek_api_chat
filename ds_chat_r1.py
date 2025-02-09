@@ -7,7 +7,7 @@ class TextAnalyzer:
     """
     
     def __init__(self, input_file, output_dir=None, system_prompt="You are a helpful assistant", 
-                 user_prompt="请分析以下文本内容：\n{user_input}", model_type="deepseek-chat", 
+                 user_prompt="请分析以下文本内容：\n{user_input}", model_type="deepseek-reasoner", 
                  api_key="", base_url="https://api.deepseek.com"):
         """
         初始化TextAnalyzer类。
