@@ -6,21 +6,18 @@
 
 python -m venv .venv
 
-2激活虚拟库
-
-venv\Scripts\activate
-
-3安装库
+2安装库
 
 pip install openai
 
 pip install tqdm
 
-#api获取
+# api获取
 https://platform.deepseek.com/api_keys 在这里获取并且创建你的deepseek api key
 
 
 # 程序使用说明
+修改
 
 全局变量MODEL_TYPE = "deepseek-reasoner" 设置可选的模型名称，可以选MODEL = "deepseek-chat"
 
